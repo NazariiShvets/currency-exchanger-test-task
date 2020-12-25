@@ -1,9 +1,9 @@
+@import 'index.scss' ;
+
 .footer {
-  background-color: grey;
-  display: flex;
+  @extend .flex-center-center;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  background-color: grey;
   min-height: 10vh;
   color: aliceblue;
 
@@ -12,9 +12,11 @@
   }
   &__links{
     color: black;
-    &--link{
-      color: black;
-      margin-right: 5px;
-    }
+  }
+}
+.footer-links{
+  &__link{
+    color: black;
+    margin-right: 5px;
   }
 }

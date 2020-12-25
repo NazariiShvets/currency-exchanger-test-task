@@ -1,0 +1,16 @@
+// Variables
+
+
+// mixins
+
+// basic classes
+
+.flex{
+    display: flex;
+}
+
+.flex-center-center{
+    @extend .flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -4,6 +4,8 @@
 /vscode
 /idea
 /.idea
+/eslintcache
+/.eslintcache
 
 # dependencies
 /node_modules
