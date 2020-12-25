@@ -4,10 +4,10 @@
 // Variables
 $colorBlack: #000000;
 $colorWhite: #ffffff;
-$colorGrey : #263238;
-$colorRed : #ad1357;
+$colorGrey: #263238;
+$colorRed: #ad1357;
 
-$fontRoboto : Roboto;
+$fontRoboto: Roboto;
 
 // mixins
 @mixin transform($property) {
@@ -15,20 +15,23 @@ $fontRoboto : Roboto;
   -ms-transform: $property;
   transform: $property;
 }
+
 @mixin font {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-weight: 400;
 }
 
 // basic classes
-%lightTheme{
+%lightTheme {
   background-color: $colorWhite;
   color: $colorBlack;
 }
-%darkTheme{
+
+%darkTheme {
   background-color: $colorGrey;
   color: $colorWhite;
 }
+
 %flex {
   display: flex;
 }
@@ -38,25 +41,38 @@ $fontRoboto : Roboto;
   justify-content: center;
   align-items: center;
 }
-%flex-sb-center{
+
+%flex-sb-center {
   @extend %flex;
   justify-content: space-between;
   align-items: center;
 }
-%header-btn{
+
+%header-btn {
   margin-left: 50px;
   padding: 20px;
-  &:hover{
+
+  &:hover {
     cursor: pointer;
   }
 }
+
 //===========================================
 
-.App{
+.app {
   @include font;
   @extend %flex;
   @extend %lightTheme;
   min-height: 100vh;
   flex-direction: column;
-  flex : 0 0 auto;
+  flex: 0 0 auto;
+
+  &Dark {
+    @include font;
+    @extend %darkTheme;
+  }
+}
+
+.main {
+  min-height: 80vh;
 }

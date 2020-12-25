@@ -1,10 +1,10 @@
-@import 'src/index';
+@import '../../index.module';
 
 .footer {
   @extend %flex-center-center;
   @extend %lightTheme;
   flex-direction: column;
-  min-height: 10vh;
+  height: 10vh;
 }
 
 .footerDark {

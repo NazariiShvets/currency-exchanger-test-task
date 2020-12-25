@@ -1,9 +1,8 @@
-@import 'src/index';
+@import '../../index.module';
 
 .header {
   @extend %flex-sb-center;
   @extend %lightTheme;
-
   height: 10vh;
 
   &Dark {
