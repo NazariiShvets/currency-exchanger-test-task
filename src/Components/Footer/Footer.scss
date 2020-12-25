@@ -1,0 +1,20 @@
+.footer {
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 10vh;
+  color: aliceblue;
+
+  &__title {
+    margin-bottom: 10px;
+  }
+  &__links{
+    color: black;
+    &--link{
+      color: black;
+      margin-right: 5px;
+    }
+  }
+}
