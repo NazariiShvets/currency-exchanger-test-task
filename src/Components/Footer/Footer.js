@@ -1,20 +1,22 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
-import './Footer.scss'
+import s from './Footer.module.scss'
 
 
 const mapStateToProps = (state) => ({
-    socialLinks: state.footer.socialLinks
+    socialLinks: state.footer.socialLinks,
+    isDarkTheme: state.global.isDarkTheme,
 })
-const Footer = ({ socialLinks }) => (
-    <footer className="footer">
-        <div className='footer__title'> Created by Nazarii Shvets</div>
-        <div className='footer__links footer-links'>
+const Footer = ({socialLinks, isDarkTheme}) => (
+    <footer className={isDarkTheme ? s.footerDark : s.footer}>
+        <div className={s.title}> Created by Nazarii Shvets</div>
+        <div>
             {socialLinks.map(link => (
-                <a className='footer-links__link' key={link.id} href={link.url} target='_blank'
-                    rel='noreferrer'>
-                    <img src={link.logo} key={link.id} alt="" width='30px' className='footer-links__img' />
+                <a className={s.link} key={link.id}
+                   href={link.url} target='_blank'
+                   rel='noreferrer'>
+                    <img src={link.logo} key={link.id} alt="" width='30px'/>
                 </a>
             ))}
         </div>

@@ -1,0 +1,23 @@
+@import 'src/index';
+
+.footer {
+  @extend %flex-center-center;
+  @extend %lightTheme;
+  flex-direction: column;
+  min-height: 10vh;
+}
+
+.footerDark {
+  @extend .footer;
+  @extend %darkTheme;
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+.link {
+  color: $colorBlack;
+  margin-right: 5px;
+}
+

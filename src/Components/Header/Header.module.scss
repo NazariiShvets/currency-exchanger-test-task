@@ -1,0 +1,29 @@
+@import 'src/index';
+
+.header {
+  @extend %flex-sb-center;
+  @extend %lightTheme;
+
+  height: 10vh;
+
+  &Dark {
+    @extend .header;
+    @extend %darkTheme;
+  }
+}
+
+.title {
+  @extend %header-btn;
+
+  &:hover {
+    cursor: auto;
+  }
+}
+
+.btn {
+  @extend %header-btn;
+}
+
+.flex {
+  @extend %flex-sb-center;
+}

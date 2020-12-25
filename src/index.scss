@@ -1,16 +1,62 @@
-// Variables
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import '~normalize.css';
 
+// Variables
+$colorBlack: #000000;
+$colorWhite: #ffffff;
+$colorGrey : #263238;
+$colorRed : #ad1357;
+
+$fontRoboto : Roboto;
 
 // mixins
-
-// basic classes
-
-.flex{
-    display: flex;
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  transform: $property;
+}
+@mixin font {
+  font-family: "Roboto";
+  font-weight: 400;
 }
 
-.flex-center-center{
-    @extend .flex;
-    justify-content: center;
-    align-items: center;
+// basic classes
+%lightTheme{
+  background-color: $colorWhite;
+  color: $colorBlack;
+}
+%darkTheme{
+  background-color: $colorGrey;
+  color: $colorWhite;
+}
+%flex {
+  display: flex;
+}
+
+%flex-center-center {
+  @extend %flex;
+  justify-content: center;
+  align-items: center;
+}
+%flex-sb-center{
+  @extend %flex;
+  justify-content: space-between;
+  align-items: center;
+}
+%header-btn{
+  margin-left: 50px;
+  padding: 20px;
+  &:hover{
+    cursor: pointer;
+  }
+}
+//===========================================
+
+.App{
+  @include font;
+  @extend %flex;
+  @extend %lightTheme;
+  min-height: 100vh;
+  flex-direction: column;
+  flex : 0 0 auto;
 }
