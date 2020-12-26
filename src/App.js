@@ -1,22 +1,22 @@
 import React from 'react'
-import Footer from './Components/Footer/Footer'
 import Header from './Components/Header/Header'
 import s from './index.module.scss'
-import {connect} from 'react-redux'
+import {Switch, Route, Redirect} from 'react-router-dom'
+import Converter from './Components/Converter/Converter'
+import Exchange from './Components/Exchange/Exchange'
 
 
-const mapStateToProps = state => ({
-    isDarkTheme: state.global.isDarkTheme
-})
+const App = () => (<>
+    <Header/>
+    <main className={s.main}>
+        <Switch>
+            <Route path='/converter' component={Converter}/>
+            <Route path='/exchange' component={Exchange}/>
+            <Route path='/' exact>
+                <Redirect to='/converter'/>
+            </Route>
+        </Switch>
+    </main>
+</>)
 
-const App = ({isDarkTheme}) => (
-    <div className={isDarkTheme ? s.appDark : s.app}>
-        <Header/>
-        <main className={s.main}>
-
-        </main>
-        <Footer/>
-    </div>
-)
-
-export default connect(mapStateToProps, {})(App)
+export default App

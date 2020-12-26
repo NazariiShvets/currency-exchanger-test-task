@@ -1,16 +1,14 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import s from './Header.module.scss'
 import {toggleIsLogged} from '../../Redux/headerReducer'
-import {toggleIsDarkTheme} from '../../Redux/globalContextReducer'
+import {NavLink} from 'react-router-dom'
 
 
 const mapStateToProps = state => ({
     isLogged: state.header.isLogged,
-    isDarkTheme: state.global.isDarkTheme
 })
 
-const Header = ({isLogged, isDarkTheme, ...props}) => {
+const Header = ({isLogged, ...props}) => {
     const loginHandler = () => {
         props.toggleIsLogged(true)
     }
@@ -18,17 +16,23 @@ const Header = ({isLogged, isDarkTheme, ...props}) => {
         props.toggleIsLogged(false)
     }
     return (
-        <header className={isDarkTheme ? s.headerDark : s.header}>
-            <div className={s.title}>Обменник валют</div>
-            <div className={s.flex}>
-                <div className={s.btn} onClick={() => props.toggleIsDarkTheme(!isDarkTheme)}>Сменить тему</div>
+        <nav className='red darken-4'>
+            <div className="nav-wrapper container ">
                 {isLogged
-                    ? <div onClick={logoutHandler} className={s.btn}>Выйти</div>
-                    : <div onClick={loginHandler} className={s.btn}>Ввойти</div>
+                    ? <div onClick={logoutHandler} className="brand-logo right">Logout</div>
+                    : <div onClick={loginHandler} className="brand-logo right">Login</div>
                 }
+                <ul className="left hide-on-med-and-down">
+                    <li><NavLink to='/converter'>Converter</NavLink></li>
+                    <li><NavLink to='/exchange'>Exchange</NavLink></li>
+                </ul>
             </div>
-        </header>
+        </nav>
     )
 }
 
-export default connect(mapStateToProps, {toggleIsLogged, toggleIsDarkTheme})(Header)
+export default connect(mapStateToProps,
+    {
+        toggleIsLogged
+    }
+)(Header)

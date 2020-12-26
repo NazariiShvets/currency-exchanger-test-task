@@ -1,12 +1,12 @@
 import {applyMiddleware, combineReducers, createStore} from 'redux'
 import thunkMiddleware from 'redux-thunk'
+import exchangeReducer from './exchangeReducer'
 import footerReducer from './footerReducer'
 import headerReducer from './headerReducer'
-import globalContextReducer from './globalContextReducer'
 
 
 const reducers = combineReducers({
-    global: globalContextReducer,
+    exchange: exchangeReducer,
     header: headerReducer,
     footer: footerReducer,
 })
