@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from './Components/Header/Header'
-import s from './index.module.scss'
+import s from './index.scss'
 import {Switch, Route, Redirect} from 'react-router-dom'
 import Converter from './Components/Converter/Converter'
 import Exchange from './Components/Exchange/Exchange'

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
-import {addToFavoriteButtonHandler, getExchanges, setInitialStateToExchanges} from '../../Redux/exchangeReducer'
+import {getExchanges, setInitialStateToExchanges} from '../../Redux/exchangeReducer'
 import Loader from '../Loader/Loader'
 import ExchangeCard from './ExchangeCard'
 
@@ -11,27 +11,26 @@ const mapStateToProps = state => ({
     favoriteExchanges: state.exchange.favoriteExchanges,
 })
 
-const Exchange = ({isExchangesFetching, exchanges, favoriteExchanges, ...props}) => {
+const Exchange = ({isExchangesFetching, exchanges, favoriteExchanges, getExchanges, setInitialStateToExchanges}) => {
     useEffect(() => {
-        props.getExchanges()
-    }, [])
+        getExchanges()
+    }, [getExchanges])
     useEffect(() => () => {
-        props.setInitialStateToExchanges()
-    }, [])
+    }, [setInitialStateToExchanges])
     if (isExchangesFetching) {
         return <Loader/>
     }
-    const checkIsRateInFavorite = exchange => favoriteExchanges.some(rate => rate.id === exchange.id)
+    const exchangesWithFavoritesOnTopArr = exchanges.reduce((ratesArr, exchange) => !(
+        ratesArr.some(rate => rate.r030 === exchange.r030))
+        ? [...ratesArr, exchange]
+        : ratesArr, favoriteExchanges)
 
-    return exchanges.map(exchange => <ExchangeCard
+    return exchangesWithFavoritesOnTopArr.map(exchange => <ExchangeCard
         key={exchange.r030}
         exchange={exchange}
-        buttonHandler={props.addToFavoriteButtonHandler}
-        isFavorite={checkIsRateInFavorite(exchange)}
+        isInFavorites={favoriteExchanges.some(rate => rate.r030 === exchange.r030)}
     />)
 }
 
 
-export default connect(mapStateToProps, {
-    getExchanges, setInitialStateToExchanges, addToFavoriteButtonHandler
-})(Exchange)
+export default connect(mapStateToProps, {getExchanges, setInitialStateToExchanges})(Exchange)
