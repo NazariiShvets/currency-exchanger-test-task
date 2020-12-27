@@ -38,8 +38,15 @@ export const setInitialStateToExchanges = () => ({type: SET_INITIAL_EXCHANGES})
 
 export const getExchanges = () => async dispatch => {
     dispatch(isFetching(true))
-    const response = await axios.get(`https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json`)
-    dispatch(setExchanges(response.data))
+    const {data} = await axios.get(`https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json`)
+    data.push({
+        r030: 1,
+        txt: 'Українська гривня',
+        rate: 1,
+        cc: 'UAH',
+        exchangedate: '28.12.2020'
+    })
+    dispatch(setExchanges(data))
     dispatch(isFetching(false))
 }
 
